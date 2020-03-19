@@ -20,11 +20,13 @@
 
 https://bullshit.yzzzf.xyz/
 
-https://bullshit.yzzzf.xyz/index_cn.html（国内）
+https://bullshit.yzzzf.xyz/index_cn.html
+（国内）
 
 打印生成pdf预览：
 
 https://bullshit.yzzzf.xyz/demo.pdf
 
-http://app.yzzzf.xyz:280/cdn/demo.pdf（国内）
+http://app.yzzzf.xyz:280/cdn/demo.pdf
+（国内）
 
