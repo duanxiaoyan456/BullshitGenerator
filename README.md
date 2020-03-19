@@ -20,7 +20,7 @@
 
 https://bullshit.yzzzf.xyz/
 
-https://bullshit.yzzzf.xyz/index_cn.html
+https://bullshit.yzzzf.xyz/indexcn.html
 （国内）
 
 打印生成pdf预览：
