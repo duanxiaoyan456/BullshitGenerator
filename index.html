@@ -1,63 +1,91 @@
 <html>
-  <head>
-    <title>狗屁不通文章生成器</title>
-    <meta http-equiv="content-type" content="txt/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link rel="icon" href="data:image/ico;base64,aWNv">
-    <script src="https://hm.baidu.com/hm.js?058d1e446dd338b69f2e385ba2f930f2"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BM8WXEWW3P"></script>
-  </head>
-  <body>
-    <div id="主体">
-      <div id="标题">文章生成器</div>
-      <div id="主题">
-        <span>主题</span>
-        <input></input>
-        <button onclick="生成文章()">生成</button>
-      </div>
-      <div id="文章"></div>
+
+<head>
+  <title>狗屁不通文章生成器</title>
+  <meta http-equiv="content-type" content="txt/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="icon" href="data:image/ico;base64,aWNv">
+  <script src="https://hm.baidu.com/hm.js?058d1e446dd338b69f2e385ba2f930f2"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BM8WXEWW3P"></script>
+  <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/jQuery.print/1.6.0/jQuery.print.min.js"></script>
+</head>
+
+<body>
+  <div id="主体">
+    <div id="标题">文章生成器</div>
+    <div id="主题">
+      <span>主题</span>
+      <input></input>
+      <button onclick="生成文章()">文字版</button>
+      <button onclick="生成手写()">手写版</button>
+      <button onclick="打印()" style="display: none;" id="print">打印</button>
     </div>
-    <div id="声明">
-      <p id="声明文字">请勿将生成的文章用于正规用途</p>
-      <p><a class="链接" href="声明.txt">声明</a></p>
-    </div>
-    <div id="页脚">
-      <p>
-        网页版
-        <a class="链接" href="https://github.com/suulnnka/BullshitGenerator"><svg class="图标" viewBox="0 0 16 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></a>
-        @<a class="链接" href="https://www.zhihu.com/people/su-lan-qia">suulnnka</a>
-       </p>
-      <p>
-        原版
-        <a class="链接" href="https://github.com/menzi11/BullshitGenerator"><svg class="图标" viewBox="0 0 16 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></a>
-        @<a class="链接" href="https://www.zhihu.com/people/ke-meng-90">menzi11</a>
-      </p>
-    </div>
-  </body>
+    <div id="文章"></div>
+    <div id="hand" style="display: none;"></div>
+  </div>
+  <div id="声明">
+    <p id="声明文字">请勿将生成的文章用于正规用途</p>
+    <p><a class="链接" href="声明.txt">声明</a></p>
+  </div>
+  <div id="页脚">
+    <p>
+      网页版
+      <a class="链接" href="https://github.com/suulnnka/BullshitGenerator"><svg class="图标" viewBox="0 0 16 16"
+          version="1.1" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg></a>
+      @<a class="链接" href="https://www.zhihu.com/people/su-lan-qia">suulnnka</a>
+    </p>
+    <p>
+      原版
+      <a class="链接" href="https://github.com/menzi11/BullshitGenerator"><svg class="图标" viewBox="0 0 16 16"
+          version="1.1" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg></a>
+      @<a class="链接" href="https://www.zhihu.com/people/ke-meng-90">menzi11</a>
+    </p>
+    <p>
+      修改：手写版 by Pluto0x0
+      <a class="链接" href="https://github.com/pluto0x0/BullshitGenerator"><svg class="图标" viewBox="0 0 16 16"
+          version="1.1" aria-hidden="true">
+          <path fill-rule="evenodd"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+          </path>
+        </svg></a>
+      @<a class="链接" href="https://www.zhihu.com/people/pluto0x0">Pluto0x0</a>
+    </p>
+  </div>
+</body>
+
 </html>
 
 <script>
-let _hmt = window._hmt || [];
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-BM8WXEWW3P');
+  let _hmt = window._hmt || [];
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-BM8WXEWW3P');
 
-function track(eventName, title, seed) {
-    gtag('event', eventName, {'event_label': title,'seed': seed,'title_seed':title+'_'+seed});
+  function track(eventName, title, seed) {
+    gtag('event', eventName, { 'event_label': title, 'seed': seed, 'title_seed': title + '_' + seed });
     _hmt.push(['_trackEvent', eventName, 'title', title]);
-    _hmt.push(['_trackEvent', eventName, 'title_seed', title+'_'+seed]);
-}
+    _hmt.push(['_trackEvent', eventName, 'title_seed', title + '_' + seed]);
+  }
 
-window.$ = function (selector) {
+  window.Q = function (selector) {
     return document.querySelector(selector);
-}
+  }
 
-function 获取网址参数(参数) {
+  function 获取网址参数(参数) {
     return new URL(window.location.href).searchParams.get(参数)
-}
+  }
 
-let 论述 = [
+  let 论述 = [
     '现在，解决主题的问题，是非常非常重要的。 所以， ',
     '我们不得不面对一个非常尴尬的事实，那就是， ',
     '主题的发生，到底需要如何做到，不主题的发生，又会如何产生。 ',
@@ -90,9 +118,9 @@ let 论述 = [
     '从这个角度来看， ',
     '可是，即使是这样，主题的出现仍然代表了一定的意义。 ',
     '对我个人而言，主题不仅仅是一个重大的事件，还可能会改变我的人生。 '
-]
+  ]
 
-let 名人名言 = [
+  let 名人名言 = [
     '伏尔泰曾经说过，不经巨大的困难，不会有伟大的事业。这不禁令我深思',
     '富勒曾经说过，苦难磨炼一些人，也毁灭另一些人。这不禁令我深思',
     '文森特·皮尔曾经说过，改变你的想法，你就改变了自己的世界。这不禁令我深思',
@@ -193,149 +221,189 @@ let 名人名言 = [
     '史美尔斯曾经说过，书籍把我们引入最美好的社会，使我们认识各个时代的伟大智者。这不禁令我深思',
     '冯学峰曾经说过，当一个人用工作去迎接光明，光明很快就会来照耀着他。这不禁令我深思',
     '吉格·金克拉曾经说过，如果你能做梦，你就能实现它。这不禁令我深思',
-]
+  ]
 
-let 后面垫话 = [
+  let 后面垫话 = [
     '这不禁令我深思。 ',
     '带着这句话，我们还要更加慎重的审视这个问题： ',
     '这启发了我， ',
     '我希望诸位也能好好地体会这句话。 ',
     '这句话语虽然很短，但令我浮想联翩。 ',
     '这似乎解答了我的疑惑。 ',
-]
+  ]
 
-let 前面垫话 = [
+  let 前面垫话 = [
     '曾经说过',
     '在不经意间这样说过',
     '曾经提到过',
     '说过一句富有哲理的话'
-]
+  ]
 
-let 初始主题 = [
+  let 初始主题 = [
     '一天掉多少根头发',
     '中午吃什么',
     '学生会退会',
     '好好学习',
     '生活的意义',
     '科学和人文谁更有意义'
-]
+  ]
 
-let 下取整 = Math.floor;
+  let 下取整 = Math.floor;
 
-let 同余乘数 = 214013;
-let 同余加数 = 2531011;
-let 同余模 = Math.pow(2,32);
+  let 同余乘数 = 214013;
+  let 同余加数 = 2531011;
+  let 同余模 = Math.pow(2, 32);
 
-let 随机种子 = 获取网址参数('随机种子') || 下取整( 随便取一个数(0, 同余模, Math.random) );
+  let 随机种子 = 获取网址参数('随机种子') || 下取整(随便取一个数(0, 同余模, Math.random));
 
-let 主题 = 获取网址参数('主题') || 随便取一句(初始主题)
+  let 主题 = 获取网址参数('主题') || 随便取一句(初始主题)
 
-$('input').value = 主题;
+  Q('input').value = 主题;
 
-// LCG https://en.wikipedia.org/wiki/Linear_congruential_generator
-function 同余发生器() {
-    随机种子 = ( 随机种子 * 同余乘数 + 同余加数 ) % 同余模;
+  // LCG https://en.wikipedia.org/wiki/Linear_congruential_generator
+  function 同余发生器() {
+    随机种子 = (随机种子 * 同余乘数 + 同余加数) % 同余模;
     return 随机种子 / 同余模;
-};
+  };
 
-function 随便取一句(列表){
-    let 坐标 = 下取整( 同余发生器() * 列表.length );
+  function 随便取一句(列表) {
+    let 坐标 = 下取整(同余发生器() * 列表.length);
     return 列表[坐标];
-}
+  }
 
-function 随便取一个数(最小值 = 0,最大值 = 100,随机数函数 = 同余发生器){
-    let 数字 = 随机数函数() * ( 最大值 - 最小值 ) + 最小值;
+  function 随便取一个数(最小值 = 0, 最大值 = 100, 随机数函数 = 同余发生器) {
+    let 数字 = 随机数函数() * (最大值 - 最小值) + 最小值;
     return 数字;
-}
+  }
 
-function 来点名人名言(){
+  function 来点名人名言() {
     let 名言 = 随便取一句(名人名言)
-    名言 = 名言.replace('曾经说过', 随便取一句(前面垫话) )
-    名言 = 名言.replace('这不禁令我深思', 随便取一句(后面垫话) )
+    名言 = 名言.replace('曾经说过', 随便取一句(前面垫话))
+    名言 = 名言.replace('这不禁令我深思', 随便取一句(后面垫话))
     return 名言
-}
+  }
 
-function 来点论述(){
+  function 来点论述() {
     let 句子 = 随便取一句(论述);
-    句子 = 句子.replace(RegExp('主题', 'g'),主题);
+    句子 = 句子.replace(RegExp('主题', 'g'), 主题);
     return 句子;
-}
+  }
 
-function 增加段落(段落){
-    if(段落[段落.length-1] === ' '){
-        段落 = 段落.slice(0,-2)
+  function 增加段落(段落) {
+    if (段落[段落.length - 1] === ' ') {
+      段落 = 段落.slice(0, -2)
     }
     return '　　' + 段落 + '。 '
-}
+  }
 
-function 生成文章(){
-    主题 = $('input').value
-    history.pushState({url: window.location.href}, null ,'?主题=' + 主题 + '&随机种子=' + 随机种子);
+  function 核心功能() {
+    主题 = Q('input').value
+    history.pushState({ url: window.location.href }, null, '?主题=' + 主题 + '&随机种子=' + 随机种子);
     track('generator', 主题, 随机种子);
     let 文章 = []
     let 段落 = '';
     let 文章长度 = 0;
-    while( 文章长度 < 12000 ){
-        let 随机数 = 随便取一个数();
-        if(随机数 < 5 && 段落.length > 200){
-            段落 = 增加段落(段落);
-            文章.push(段落);
-            段落 = '';
-        }else if(随机数 < 20){
-            let 句子 = 来点名人名言();
-            文章长度 = 文章长度 + 句子.length;
-            段落 = 段落 + 句子;
-        }else{
-            let 句子 = 来点论述();
-            文章长度 = 文章长度 + 句子.length;
-            段落 = 段落 + 句子;
-        }
+    while (文章长度 < 12000) {
+      let 随机数 = 随便取一个数();
+      if (随机数 < 5 && 段落.length > 200) {
+        段落 = 增加段落(段落);
+        文章.push(段落);
+        段落 = '';
+      } else if (随机数 < 20) {
+        let 句子 = 来点名人名言();
+        文章长度 = 文章长度 + 句子.length;
+        段落 = 段落 + 句子;
+      } else {
+        let 句子 = 来点论述();
+        文章长度 = 文章长度 + 句子.length;
+        段落 = 段落 + 句子;
+      }
     }
     段落 = 增加段落(段落);
     文章.push(段落);
 
-    let 排版 = '<div>' + 文章.join('</div><div>') + '</div>';
-    $('#文章').innerHTML = 排版;
-    $('#声明文字').style.display = 'block'
-}
+    return 文章.join('');
+  }
 
-if (获取网址参数('主题')) {
+  function 生成文章() {
+    Q('#文章').innerHTML = 核心功能();
+    Q('#声明文字').style.display = 'block';
+    $('#hand').empty();
+    $('#hand').hide();
+    $('#print').hide();
+    $('#文章').show();
+  }
+
+  function 打印() {
+    $("#hand").print({ timeout: 4000 });
+  }
+
+  function 生成手写() {
+    let s = 核心功能();
+    let box = $('#hand');
+    box.show();
+    box.empty();
+    $('#文章').empty();
+    $('#文章').hide();
+    for (var i in s) {
+      if (Math.random() < 0.06) {
+        box.append('<span>&#xFFE' + Math.floor(Math.random() * 4.0 + 6.0) + ';</span>');
+      }
+      let cur = $('<span>' + s[i] + '</span>');
+      if (Math.random() < 0.2) cur.addClass('r');
+      else if (Math.random() < 0.2) cur.addClass('l');
+      if (Math.random() < 0.2) cur.addClass('lg');
+      else if (Math.random() < 0.2) cur.addClass('sm');
+      if (Math.random() < 0.2) cur.addClass('up');
+      else if (Math.random() < 0.2) cur.addClass('dwm');
+      box.append(cur);
+    }
+    $('#print').show();
+  }
+
+  if (获取网址参数('主题')) {
     生成文章();
     track('shared', 主题, 随机种子);
-}
+  }
 
 </script>
 <style>
   @media screen and (max-width: 1024px) {
-    html{
+    html {
       font-size: 2vw;
       color: #333333;
     }
-    body{
+
+    body {
       margin: 0;
     }
-    #主体{
+
+    #主体 {
       border: 2px solid #333333;
       margin: 6px;
       padding: 6px;
       background: #f8f8f8;
     }
-    #标题{
+
+    #标题 {
       font-size: 3rem;
       line-height: 3rem;
       text-align: center;
     }
-    #主题{
+
+    #主题 {
       text-align: center;
       margin-top: 6px;
       font-size: 0px;
     }
-    #主题 span{
+
+    #主题 span {
       font-size: 2rem;
       vertical-align: baseline;
       margin-left: 6px;
     }
-    #主题 input{
+
+    #主题 input {
       border: none;
       border-bottom: #666666 2px solid;
       padding: 1px 0 0 0;
@@ -347,7 +415,8 @@ if (获取网址参数('主题')) {
       text-align: center;
       min-width: 20%;
     }
-    #主题 button{
+
+    #主题 button {
       border: 0;
       padding: 3px 7px 3px 7px;
       margin: 0;
@@ -356,34 +425,42 @@ if (获取网址参数('主题')) {
       background: #454545;
       color: #efefef;
     }
-    #文章 div{
+
+    #文章 div {
       margin-top: 6px;
       font-size: 2rem;
       text-align: justify;
     }
-    #声明{
+
+    #声明 {
       float: left;
       margin: 0 0 0 6px;
     }
-    #声明 p{
+
+    #声明 p {
       margin: 0 0 3px 3px;
       font-size: 1.4rem;
     }
-    #声明文字{
+
+    #声明文字 {
       display: none;
     }
-    #页脚{
+
+    #页脚 {
       margin: 6px;
     }
-    #页脚 p{
+
+    #页脚 p {
       margin: 3px;
       font-size: 1.4rem;
       text-align: right;
     }
-    .链接{
+
+    .链接 {
       color: #666666;
     }
-    .图标{
+
+    .图标 {
       height: 1rem;
       width: 1rem;
       vertical-align: top;
@@ -392,35 +469,41 @@ if (获取网址参数('主题')) {
   }
 
   @media screen and (min-width: 1024px) {
-    html{
+    html {
       font-size: 1.3vw;
       color: #333333;
     }
-    body{
+
+    body {
       margin: 0;
     }
-    #主体{
+
+    #主体 {
       border: 2px solid #333333;
       margin: 20px;
       padding: 20px;
       background: #f8f8f8;
     }
-    #标题{
+
+    #标题 {
       font-size: 1.9rem;
       line-height: 1.9rem;
       text-align: center;
     }
-    #主题{
+
+    #主题 {
       text-align: center;
       margin-top: 20px;
       font-size: 0px;
     }
-    #主题 span{
+
+    #主题 span {
       font-size: 1rem;
       vertical-align: baseline;
       margin-left: 20px;
     }
-    #主题 input{
+
+    #主题 input {
       border: none;
       border-bottom: #666666 2px solid;
       padding: 1px 0 0 0;
@@ -432,7 +515,8 @@ if (获取网址参数('主题')) {
       text-align: center;
       min-width: 20%;
     }
-    #主题 button{
+
+    #主题 button {
       border: 0;
       padding: 5px 15px 5px 15px;
       margin: 0;
@@ -441,37 +525,46 @@ if (获取网址参数('主题')) {
       background: #454545;
       color: #efefef;
     }
-    #文章 div{
+
+    #文章 div {
       margin-top: 20px;
       text-align: justify;
     }
-    #声明{
+
+    #声明 {
       float: left;
       margin: 0 0 0 20px;
     }
-    #声明 p{
+
+    #声明 p {
       margin: 0 0 5px 5px;
       font-size: 0.75rem;
     }
-    #声明文字{
+
+    #声明文字 {
       display: none;
     }
-    #页脚{
+
+    #页脚 {
       margin: 20px;
     }
-    #页脚 p{
+
+    #页脚 p {
       margin: 5px;
       font-size: 0.75rem;
       text-align: right;
     }
-    .链接{
+
+    .链接 {
       color: #666666;
     }
-    #页脚 span{
+
+    #页脚 span {
       padding: 2px 0 0 0;
       vertical-align: baseline;
     }
-    .图标{
+
+    .图标 {
       height: 0.7rem;
       width: 0.7rem;
       vertical-align: top;
@@ -479,4 +572,45 @@ if (获取网址参数('主题')) {
     }
   }
 
+  /*----------*/
+
+  @font-face {
+    font-family: 'hand';
+    src: url('陈静的字完整版_魔改2.ttf');
+  }
+
+  #hand>span {
+    position: relative;
+    display: inline-block;
+    font-family: hand;
+    font-size: 1cm;
+  }
+
+  #hand>span.l {
+    transform: rotate(4.5deg);
+    -ms-transform: rotate(4.5deg);
+    -webkit-transform: rotate(4.5deg);
+  }
+
+  #hand>span.r {
+    transform: rotate(-4.5deg);
+    -ms-transform: rotate(-4.5deg);
+    -webkit-transform: rotate(-4.5deg);
+  }
+
+  #hand>span.lg {
+    font-size: 10.3mm;
+  }
+
+  #hand>span.sm {
+    font-size: 9.2mm;
+  }
+
+  #hand>span.up {
+    top: -2px;
+  }
+
+  #hand>span.dwm {
+    top: 2px;
+  }
 </style>

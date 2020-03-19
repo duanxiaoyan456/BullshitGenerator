@@ -1,16 +1,21 @@
 # 文章生成器
 # BullshitGenerator
-
+## 🍴forked from https://github.com/suulnnka/BullshitGenerator
 原项目地址 https://github.com/menzi11/BullshitGenerator
 
 网页版地址 https://suulnnka.github.io/BullshitGenerator/index.html
 
-修改:  
-1.设计并移植至浏览器  
-2.修正标点及布局的bug  
-3.更加中文化编程  
+## Features
+- 手写字体显示
+  - 随机大小偏移
+  - 随机旋转偏移
+  - 随机上下位置偏移
+- 一键打印
 
-未来可以做的点:  
-1.解决python与javascript代码协同问题  
-2.更美的文字布局排版  
-3.更多的语料库与更好的生成算法  
+## Demo
+网页版：
+https://bullshit.yzzzf.xyz/
+
+打印生成pdf预览：
+https://bullshit.yzzzf.xyz/demo.pdf
+
