@@ -14,6 +14,8 @@
 - 一键打印
 
 ## Demo
+**tips:请耐心等待字体加载**
+
 网页版：
 https://bullshit.yzzzf.xyz/
 
