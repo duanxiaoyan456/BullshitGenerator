@@ -17,10 +17,14 @@
 **tips:请耐心等待字体加载**
 
 网页版：
+
 https://bullshit.yzzzf.xyz/
-https://bullshit.yzzzf.xyz/index_cn.html
+
+https://bullshit.yzzzf.xyz/index_cn.html（国内）
 
 打印生成pdf预览：
+
 https://bullshit.yzzzf.xyz/demo.pdf
-http://app.yzzzf.xyz:280/cdn/demo.pdf
+
+http://app.yzzzf.xyz:280/cdn/demo.pdf（国内）
 
