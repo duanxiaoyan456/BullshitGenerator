@@ -5,8 +5,6 @@
   <meta http-equiv="content-type" content="txt/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <link rel="icon" href="data:image/ico;base64,aWNv">
-  <script src="https://hm.baidu.com/hm.js?058d1e446dd338b69f2e385ba2f930f2"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BM8WXEWW3P"></script>
   <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdn.staticfile.org/jQuery.print/1.6.0/jQuery.print.min.js"></script>
 </head>
@@ -336,7 +334,7 @@
   }
 
   function 打印() {
-    $("#hand").print({ timeout: 10000});
+    $("#hand").print({ timeout: 10000, iframe: '#asd'});
   }
 
   function 生成手写() {
